@@ -14,6 +14,7 @@ class BlogController extends Controller
             'slug' => $slug,
             // You can add more data here when you have a database
             'title' => ucwords(str_replace('-', ' ', $slug)),
+            'excerpt' => 'This is the excerpt of the blog post.',
             'content' => 'This is the content of the blog post.',
             'publishedDate' => now(),
             'readingTime' => '5 min',
