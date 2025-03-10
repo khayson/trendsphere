@@ -43,24 +43,7 @@
 
                 <!-- Article Content -->
                 <div class="prose prose-lg dark:prose-invert max-w-none">
-                    {!! $content ?? '
-                    <h2>What is the urgency to redesign the website?</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>
-
-                    <h2>Key Considerations</h2>
-                    <ul>
-                        <li>Current website performance metrics</li>
-                        <li>User feedback and pain points</li>
-                        <li>Business goals and objectives</li>
-                        <li>Competition analysis</li>
-                    </ul>
-
-                    <h2>Project Timeline</h2>
-                    <p>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>' !!}
+                    {!! $content !!}
                 </div>
 
                 <!-- Tags -->
@@ -74,6 +57,72 @@
                                 </span>
                             @endforeach
                         </div>
+                    </div>
+                </div>
+
+                <!-- Author Section -->
+                <div class="mt-16 pt-8 border-t border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-4">
+                        <img
+                            src="https://placehold.co/100x100"
+                            alt="Author"
+                            class="w-16 h-16 rounded-full object-cover"
+                        >
+                        <div>
+                            <h3 class="font-semibold text-gray-900 dark:text-white">{{ $author ?? 'John Doe' }}</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">{{ $authorBio ?? 'Senior UX Designer & Content Strategist' }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Posts -->
+                <div class="mt-16 pt-8 border-t border-gray-100 dark:border-gray-800">
+                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-8">Related Articles</h2>
+                    <div class="grid grid-cols-2 gap-8">
+                        @foreach($relatedPosts ?? [
+                            [
+                                'title' => 'The Impact of AI on Modern Web Design',
+                                'image' => 'https://placehold.co/400x300',
+                                'readTime' => '4 min read'
+                            ],
+                            [
+                                'title' => 'User-Centered Design Principles for 2024',
+                                'image' => 'https://placehold.co/400x300',
+                                'readTime' => '6 min read'
+                            ]
+                        ] as $post)
+                            <a href="#" class="group">
+                                <div class="aspect-[4/3] overflow-hidden rounded-lg mb-4">
+                                    <img
+                                        src="{{ $post['image'] }}"
+                                        alt="{{ $post['title'] }}"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    >
+                                </div>
+                                <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors line-clamp-2">
+                                    {{ $post['title'] }}
+                                </h3>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mt-2">{{ $post['readTime'] }}</p>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+
+                <!-- Newsletter Subscription -->
+                <div class="mt-16 pt-8 border-t border-gray-100 dark:border-gray-800">
+                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-8">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Subscribe to our newsletter</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6">Get the latest articles and insights delivered to your inbox.</p>
+                        <form class="flex gap-4">
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                class="flex-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-2 focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
+                            >
+                            <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg transition-colors">
+                                Subscribe
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
