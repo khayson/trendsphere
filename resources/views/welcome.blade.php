@@ -39,7 +39,7 @@
     </div>
 
     <!-- Header -->
-    <header class="fixed w-full z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="container mx-auto px-6 py-4">
             <div class="flex items-center justify-between">
@@ -68,9 +68,9 @@
     </header>
 
     <!-- Breaking News Banner -->
-    <div class="bg-red-600 text-white py-3 overflow-hidden">
-        <div class="container mx-auto px-6 relative">
-            <div class="flex items-center">
+    <div class="bg-red-600 text-white relative flex items-center overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center py-1">
                 <span class="font-semibold mr-4 whitespace-nowrap">Breaking News:</span>
                 <div class="overflow-hidden">
                     <p class="scroll-text text-sm">
