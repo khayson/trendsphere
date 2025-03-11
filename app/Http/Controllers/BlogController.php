@@ -2,23 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
+    public function index()
+    {
+        $posts = Post::with(['category', 'author', 'tags'])
+            ->published()
+            ->latest('published_at')
+            ->paginate(12);
+
+        return view('blog.index', compact('posts'));
+    }
+
     public function show($slug)
     {
-        // Here you would typically fetch the blog post from your database
-        // For now, we'll return the view with the slug
+        $post = Post::with(['category', 'author', 'tags', 'comments.user', 'comments.replies.user'])
+            ->published()
+            ->where('slug', $slug)
+            ->firstOrFail();
+
+        // Increment view count
+        $post->incrementViews();
+
+        // Get related posts
+        $relatedPosts = $post->relatedPosts()->get();
+
         return view('blog.show', [
-            'slug' => $slug,
-            // You can add more data here when you have a database
-            'title' => ucwords(str_replace('-', ' ', $slug)),
-            'excerpt' => 'This is the excerpt of the blog post.',
-            'content' => 'This is the content of the blog post.',
-            'publishedDate' => now(),
-            'readingTime' => '5 min',
-            'image' => 'https://placehold.co/800x600'
+            'post' => $post,
+            'title' => $post->title,
+            'content' => $post->content,
+            'image' => $post->featured_image,
+            'image_alt' => $post->featured_image_alt,
+            'relatedPosts' => $relatedPosts,
         ]);
+    }
+
+    public function byCategory($category)
+    {
+        $posts = Post::whereHas('category', function ($query) use ($category) {
+            $query->where('slug', $category);
+        })
+            ->with(['category', 'author', 'tags'])
+            ->published()
+            ->latest('published_at')
+            ->paginate(12);
+
+        return view('blog.index', compact('posts'));
+    }
+
+    public function byTag($tag)
+    {
+        $posts = Post::whereHas('tags', function ($query) use ($tag) {
+            $query->where('slug', $tag);
+        })
+            ->with(['category', 'author', 'tags'])
+            ->published()
+            ->latest('published_at')
+            ->paginate(12);
+
+        return view('blog.index', compact('posts'));
     }
 }
