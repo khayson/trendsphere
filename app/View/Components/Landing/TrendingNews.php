@@ -21,7 +21,7 @@ class TrendingNews extends Component
 
     public function render()
     {
-        return view('components.landing.TrendingNews', [
+        return view('components.landing.trending-news', [
             'trendingPosts' => $this->trendingPosts
         ]);
     }
