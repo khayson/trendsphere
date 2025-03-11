@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Blog Post' }} - TO.NEWS</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-white dark:bg-gray-900">
     <!-- Main Container -->
@@ -52,20 +51,20 @@
                 <div class="flex items-center justify-between py-3 sm:py-4 lg:py-6 border-y border-gray-100 dark:border-gray-800">
                     <div class="flex items-center gap-2 sm:gap-4 lg:gap-6">
                         <button class="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-red-600 transition-colors">
-                            <i icon-name="heart" class="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"></i>
+                            <i data-lucide="heart" class="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"></i>
                             <span class="text-xs sm:text-sm lg:text-base">2.5k</span>
                         </button>
                         <button class="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors">
-                            <i icon-name="message-circle" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                            <i data-lucide="message-circle" class="w-5 h-5 lg:w-6 lg:h-6"></i>
                             <span class="text-sm lg:text-base">125</span>
                         </button>
                         <button class="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors">
-                            <i icon-name="bookmark" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                            <i data-lucide="bookmark" class="w-5 h-5 lg:w-6 lg:h-6"></i>
                             <span class="text-sm lg:text-base">Save</span>
                         </button>
                     </div>
                     <button class="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors">
-                        <i icon-name="share-2" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                        <i data-lucide="share-2" class="w-5 h-5 lg:w-6 lg:h-6"></i>
                     </button>
                 </div>
 
@@ -183,10 +182,14 @@
         </div>
     </div>
 
-    <!-- Initialize Lucide Icons -->
+    <!-- Move Lucide script to end of body -->
+    <script src="https://unpkg.com/lucide@0.294.0"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            lucide.createIcons();
+        // Wait for both DOM and Lucide to be ready
+        window.addEventListener('load', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         });
     </script>
 </body>
