@@ -8,37 +8,39 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-white dark:bg-gray-900">
-    <div class="flex min-h-screen">
-        <!-- Left Side - Fixed Image (40%) -->
-        <div class="w-[40%] fixed left-0 top-0 h-screen">
+    <div class="flex flex-col lg:flex-row min-h-screen">
+        <!-- Left Side - Image -->
+        <div class="w-full lg:w-[40%] lg:fixed lg:left-0 lg:top-0 h-[50vh] lg:h-screen relative">
             <img
                 src="{{ $image ?? 'https://placehold.co/800x600' }}"
                 alt="{{ $title ?? 'Blog Featured Image' }}"
                 class="w-full h-full object-cover"
             >
             <!-- Meta Information Overlay -->
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
-                <div class="space-y-4">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 lg:p-8">
+                <div class="space-y-3 lg:space-y-4">
                     <div class="flex items-center gap-4 text-sm text-white/80">
                         <span>{{ $publishedDate ?? now()->format('F d, Y') }}</span>
                         <span class="w-1 h-1 rounded-full bg-white/80"></span>
                         <span>{{ $readingTime ?? '5 min read' }}</span>
                     </div>
-                    <h1 class="text-4xl font-bold text-white leading-tight">
+                    <h1 class="text-2xl lg:text-4xl font-bold text-white leading-tight">
                         {{ $title ?? 'The Future of AI in Modern Technology' }}
                     </h1>
-                    <p class="text-white/80 text-lg">{{ $excerpt ?? 'Artificial Intelligence is reshaping our world in unprecedented ways, from healthcare to daily conveniences. Discover how these changes will affect our future.' }}</p>
+                    <p class="text-white/80 text-base lg:text-lg line-clamp-2 lg:line-clamp-none">
+                        {{ $excerpt ?? 'Artificial Intelligence is reshaping our world in unprecedented ways, from healthcare to daily conveniences. Discover how these changes will affect our future.' }}
+                    </p>
                 </div>
             </div>
             <!-- Back Button -->
-            <a href="{{ route('home') }}" class="absolute top-8 left-8 bg-white/10 backdrop-blur-md text-white px-6 py-2 rounded-full hover:bg-white/20 transition-all">
+            <a href="{{ route('home') }}" class="absolute top-4 lg:top-8 left-4 lg:left-8 bg-white/10 backdrop-blur-md text-white px-4 lg:px-6 py-2 rounded-full hover:bg-white/20 transition-all">
                 ← Back
             </a>
         </div>
 
-        <!-- Right Side - Scrollable Content (60%) -->
-        <div class="w-[60%] ml-[40%]">
-            <div class="max-w-3xl mx-auto py-16 px-12">
+        <!-- Right Side - Content -->
+        <div class="w-full lg:w-[60%] lg:ml-[40%] px-4 lg:px-0">
+            <div class="max-w-3xl mx-auto py-8 lg:py-16 lg:px-12">
                 <!-- Article Content -->
                 <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
                     {!! $content ?? '
@@ -67,28 +69,28 @@
 
                 <!-- Interaction Buttons -->
                 <div class="flex items-center justify-between py-6 border-y border-gray-100 dark:border-gray-800">
-                    <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-4 lg:gap-6">
                         <button class="flex items-center gap-2 text-gray-500 hover:text-red-600 transition-colors">
-                            <i icon-name="heart" class="w-6 h-6"></i>
-                            <span>2.5k</span>
+                            <i icon-name="heart" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                            <span class="text-sm lg:text-base">2.5k</span>
                         </button>
                         <button class="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors">
-                            <i icon-name="message-circle" class="w-6 h-6"></i>
-                            <span>125</span>
+                            <i icon-name="message-circle" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                            <span class="text-sm lg:text-base">125</span>
                         </button>
                         <button class="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors">
-                            <i icon-name="bookmark" class="w-6 h-6"></i>
-                            <span>Save</span>
+                            <i icon-name="bookmark" class="w-5 h-5 lg:w-6 lg:h-6"></i>
+                            <span class="text-sm lg:text-base">Save</span>
                         </button>
                     </div>
                     <button class="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors">
-                        <i icon-name="share-2" class="w-6 h-6"></i>
+                        <i icon-name="share-2" class="w-5 h-5 lg:w-6 lg:h-6"></i>
                     </button>
                 </div>
 
                 <!-- Comments Section -->
-                <div class="mt-12">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-8">Comments (125)</h3>
+                <div class="mt-8 lg:mt-12">
+                    <h3 class="text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-6 lg:mb-8">Comments (125)</h3>
                     <div class="space-y-8">
                         <!-- Comment Form -->
                         <form class="mb-12">
@@ -145,9 +147,9 @@
                 </div>
 
                 <!-- Related Posts -->
-                <div class="mt-16 pt-8 border-t border-gray-100 dark:border-gray-800">
-                    <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-8">Related Articles</h2>
-                    <div class="grid grid-cols-2 gap-8">
+                <div class="mt-12 lg:mt-16 pt-8 border-t border-gray-100 dark:border-gray-800">
+                    <h2 class="text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-6 lg:mb-8">Related Articles</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
                         @foreach($relatedPosts ?? [
                             [
                                 'title' => 'The Impact of AI on Modern Web Design',
@@ -178,8 +180,8 @@
                 </div>
 
                 <!-- Newsletter Subscription -->
-                <div class="mt-16 pt-8 border-t border-gray-100 dark:border-gray-800">
-                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-8">
+                <div class="mt-12 lg:mt-16 pt-8 border-t border-gray-100 dark:border-gray-800">
+                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-6 lg:p-8">
                         <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Subscribe to our newsletter</h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-6">Get the latest articles and insights delivered to your inbox.</p>
                         <form class="flex gap-4">
