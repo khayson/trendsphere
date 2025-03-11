@@ -8,71 +8,52 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-white dark:bg-gray-900">
+    <!-- Main Container -->
     <div class="flex flex-col lg:flex-row min-h-screen">
-        <!-- Left Side - Image -->
-        <div class="w-full lg:w-[40%] lg:fixed lg:left-0 lg:top-0 h-[50vh] lg:h-screen relative">
+        <!-- Left Side - Image (Full width on mobile, 40% fixed on desktop) -->
+        <div class="relative w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:w-[40%] lg:h-screen lg:fixed lg:left-0 lg:top-0">
             <img
                 src="{{ $image ?? 'https://placehold.co/800x600' }}"
                 alt="{{ $title ?? 'Blog Featured Image' }}"
                 class="w-full h-full object-cover"
             >
-            <!-- Meta Information Overlay -->
-            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 lg:p-8">
-                <div class="space-y-3 lg:space-y-4">
-                    <div class="flex items-center gap-4 text-sm text-white/80">
+            <!-- Meta Information Overlay with better mobile spacing -->
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-4 sm:p-6 lg:p-8">
+                <div class="space-y-2 sm:space-y-3 lg:space-y-4 max-w-prose">
+                    <div class="flex items-center gap-3 text-xs sm:text-sm text-white/80">
                         <span>{{ $publishedDate ?? now()->format('F d, Y') }}</span>
                         <span class="w-1 h-1 rounded-full bg-white/80"></span>
                         <span>{{ $readingTime ?? '5 min read' }}</span>
                     </div>
-                    <h1 class="text-2xl lg:text-4xl font-bold text-white leading-tight">
+                    <h1 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight">
                         {{ $title ?? 'The Future of AI in Modern Technology' }}
                     </h1>
-                    <p class="text-white/80 text-base lg:text-lg line-clamp-2 lg:line-clamp-none">
+                    <p class="text-sm sm:text-base lg:text-lg text-white/80 line-clamp-2 sm:line-clamp-3 lg:line-clamp-none">
                         {{ $excerpt ?? 'Artificial Intelligence is reshaping our world in unprecedented ways, from healthcare to daily conveniences. Discover how these changes will affect our future.' }}
                     </p>
                 </div>
             </div>
-            <!-- Back Button -->
-            <a href="{{ route('home') }}" class="absolute top-4 lg:top-8 left-4 lg:left-8 bg-white/10 backdrop-blur-md text-white px-4 lg:px-6 py-2 rounded-full hover:bg-white/20 transition-all">
+            <!-- Back Button with better mobile positioning -->
+            <a href="{{ route('home') }}"
+               class="absolute top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8 bg-white/10 backdrop-blur-md text-white px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full hover:bg-white/20 transition-all text-xs sm:text-sm lg:text-base">
                 ← Back
             </a>
         </div>
 
-        <!-- Right Side - Content -->
-        <div class="w-full lg:w-[60%] lg:ml-[40%] px-4 lg:px-0">
-            <div class="max-w-3xl mx-auto py-8 lg:py-16 lg:px-12">
-                <!-- Article Content -->
-                <div class="prose prose-lg dark:prose-invert max-w-none mb-8">
-                    {!! $content ?? '
-                    <h2>The Evolution of Artificial Intelligence</h2>
-                    <p>In recent years, artificial intelligence has made remarkable strides, transforming from a concept of science fiction into a tangible reality that influences our daily lives. The integration of AI technologies across various sectors has opened new possibilities and challenges that we must address.</p>
-
-                    <h3>Impact on Healthcare</h3>
-                    <p>One of the most promising applications of AI is in healthcare. Machine learning algorithms are now capable of:</p>
-                    <ul>
-                        <li>Detecting diseases at early stages</li>
-                        <li>Analyzing medical images with unprecedented accuracy</li>
-                        <li>Predicting patient outcomes based on vast datasets</li>
-                        <li>Optimizing treatment plans for individual patients</li>
-                    </ul>
-
-                    <h3>Transforming Business Operations</h3>
-                    <p>Businesses across industries are leveraging AI to enhance their operations, improve customer experience, and gain competitive advantages. From automated customer service to predictive analytics, AI is revolutionizing how companies operate and make decisions.</p>
-
-                    <blockquote>
-                        <p>"AI is not just another technological advancement; it\'s a fundamental shift in how we approach problem-solving and innovation."</p>
-                    </blockquote>
-
-                    <h3>Ethical Considerations</h3>
-                    <p>As AI continues to evolve, we must carefully consider the ethical implications of its implementation. Privacy concerns, algorithmic bias, and the impact on employment are just a few of the challenges we need to address.</p>' !!}
+        <!-- Right Side - Content (Full width on mobile, 60% on desktop) -->
+        <div class="w-full lg:w-[60%] lg:ml-[40%]">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-12 py-6 sm:py-8 lg:py-16">
+                <!-- Content section with improved spacing -->
+                <div class="prose prose-sm sm:prose-base lg:prose-lg dark:prose-invert max-w-none mb-6 sm:mb-8">
+                    {!! $content !!}
                 </div>
 
-                <!-- Interaction Buttons -->
-                <div class="flex items-center justify-between py-6 border-y border-gray-100 dark:border-gray-800">
-                    <div class="flex items-center gap-4 lg:gap-6">
-                        <button class="flex items-center gap-2 text-gray-500 hover:text-red-600 transition-colors">
-                            <i icon-name="heart" class="w-5 h-5 lg:w-6 lg:h-6"></i>
-                            <span class="text-sm lg:text-base">2.5k</span>
+                <!-- Interaction Buttons with better mobile layout -->
+                <div class="flex items-center justify-between py-3 sm:py-4 lg:py-6 border-y border-gray-100 dark:border-gray-800">
+                    <div class="flex items-center gap-2 sm:gap-4 lg:gap-6">
+                        <button class="flex items-center gap-1 sm:gap-2 text-gray-500 hover:text-red-600 transition-colors">
+                            <i icon-name="heart" class="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"></i>
+                            <span class="text-xs sm:text-sm lg:text-base">2.5k</span>
                         </button>
                         <button class="flex items-center gap-2 text-gray-500 hover:text-gray-700 transition-colors">
                             <i icon-name="message-circle" class="w-5 h-5 lg:w-6 lg:h-6"></i>
@@ -88,9 +69,11 @@
                     </button>
                 </div>
 
-                <!-- Comments Section -->
-                <div class="mt-8 lg:mt-12">
-                    <h3 class="text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-6 lg:mb-8">Comments (125)</h3>
+                <!-- Comments section with improved mobile layout -->
+                <div class="mt-6 sm:mt-8 lg:mt-12">
+                    <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 lg:mb-8">
+                        Comments (125)
+                    </h3>
                     <div class="space-y-8">
                         <!-- Comment Form -->
                         <form class="mb-12">
@@ -146,10 +129,10 @@
                     </div>
                 </div>
 
-                <!-- Related Posts -->
-                <div class="mt-12 lg:mt-16 pt-8 border-t border-gray-100 dark:border-gray-800">
-                    <h2 class="text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-6 lg:mb-8">Related Articles</h2>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+                <!-- Related Posts with better grid layout -->
+                <div class="mt-6 sm:mt-8 lg:mt-12 pt-4 sm:pt-6 lg:pt-8 border-t border-gray-100 dark:border-gray-800">
+                    <h2 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 lg:mb-8">Related Articles</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
                         @foreach($relatedPosts ?? [
                             [
                                 'title' => 'The Impact of AI on Modern Web Design',
@@ -179,18 +162,18 @@
                     </div>
                 </div>
 
-                <!-- Newsletter Subscription -->
-                <div class="mt-12 lg:mt-16 pt-8 border-t border-gray-100 dark:border-gray-800">
-                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-2xl p-6 lg:p-8">
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Subscribe to our newsletter</h3>
+                <!-- Newsletter with improved mobile layout -->
+                <div class="mt-6 sm:mt-8 lg:mt-12 pt-4 sm:pt-6 lg:pt-8">
+                    <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg sm:rounded-xl lg:rounded-2xl p-4 sm:p-6 lg:p-8">
+                        <h3 class="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 lg:mb-8">Subscribe to our newsletter</h3>
                         <p class="text-gray-600 dark:text-gray-400 mb-6">Get the latest articles and insights delivered to your inbox.</p>
-                        <form class="flex gap-4">
+                        <form class="flex flex-col sm:flex-row gap-3 sm:gap-4">
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                class="flex-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-2 focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
+                                class="w-full flex-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 py-2 text-sm sm:text-base focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none"
                             >
-                            <button class="bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg transition-colors">
+                            <button class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white px-6 py-2 rounded-lg transition-colors text-sm sm:text-base">
                                 Subscribe
                             </button>
                         </form>
