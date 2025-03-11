@@ -6,11 +6,11 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Video Card 1 -->
-                <div class="group">
+                <a href="{{ route('blog.show', ['slug' => 'ai-healthcare-future']) }}" class="group">
                     <div class="relative aspect-video overflow-hidden rounded-lg mb-3">
                         <img
                             src="https://placehold.co/600x400"
-                            alt="Video Thumbnail"
+                            alt="AI in Healthcare Video"
                             class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
@@ -36,14 +36,14 @@
                             <span>1 day ago</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Article Card -->
-                <div class="group">
+                <a href="{{ route('blog.show', ['slug' => 'sustainable-banking-finance']) }}" class="group">
                     <div class="aspect-video overflow-hidden rounded-lg mb-3">
                         <img
                             src="https://placehold.co/600x400"
-                            alt="Featured Article"
+                            alt="Sustainable Banking"
                             class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         >
                     </div>
@@ -61,14 +61,14 @@
                             <span>2 days ago</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Video Card 2 -->
-                <div class="group">
+                <a href="{{ route('blog.show', ['slug' => 'space-exploration-breakthrough']) }}" class="group">
                     <div class="relative aspect-video overflow-hidden rounded-lg mb-3">
                         <img
                             src="https://placehold.co/600x400"
-                            alt="Video Thumbnail"
+                            alt="Space Exploration"
                             class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         >
                         <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
@@ -78,15 +78,15 @@
                                 </svg>
                             </div>
                         </div>
-                        <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">08:45</span>
+                        <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">12:45</span>
                     </div>
                     <div class="space-y-2">
                         <span class="text-red-600 dark:text-red-500 text-sm font-medium">Video • Science</span>
                         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors line-clamp-2">
-                            Breaking Boundaries: Latest Space Exploration Discoveries
+                            Major Breakthrough in Space Exploration Technology
                         </h3>
                         <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
-                            A comprehensive look at recent breakthroughs in space exploration and their impact on future missions.
+                            Scientists reveal groundbreaking advancements in propulsion systems for deep space exploration.
                         </p>
                         <div class="flex items-center text-gray-500 dark:text-gray-400 text-sm">
                             <span>18K views</span>
@@ -94,6 +94,6 @@
                             <span>3 days ago</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </section>

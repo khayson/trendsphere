@@ -6,15 +6,16 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Trending News Card 1 -->
-                <div class="group">
+                <a href="{{ route('blog.show', ['slug' => 'innovative-farming-technology']) }}" class="group">
                     <div class="aspect-[4/3] overflow-hidden rounded-lg mb-3">
                         <img
                             src="https://placehold.co/400x300"
-                            alt="News Item"
+                            alt="Innovative Farming Technology"
                             class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         >
                     </div>
                     <div class="space-y-2">
+                        <span class="text-red-600 dark:text-red-500 text-sm font-medium">Technology</span>
                         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors line-clamp-2">
                             Innovative Farming Technology Transforms Agricultural Operations
                         </h3>
@@ -27,18 +28,19 @@
                             <span>2 hours ago</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Trending News Card 2 -->
-                <div class="group">
+                <a href="{{ route('blog.show', ['slug' => 'cultural-initiatives-highlights']) }}" class="group">
                     <div class="aspect-[4/3] overflow-hidden rounded-lg mb-3">
                         <img
                             src="https://placehold.co/400x300"
-                            alt="News Item"
+                            alt="Cultural Initiatives"
                             class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         >
                     </div>
                     <div class="space-y-2">
+                        <span class="text-red-600 dark:text-red-500 text-sm font-medium">Culture</span>
                         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors line-clamp-2">
                             Cultural Initiatives Highlights Diversity Through Events
                         </h3>
@@ -51,18 +53,19 @@
                             <span>4 hours ago</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Trending News Card 3 -->
-                <div class="group">
+                <a href="{{ route('blog.show', ['slug' => 'regional-sports-league']) }}" class="group">
                     <div class="aspect-[4/3] overflow-hidden rounded-lg mb-3">
                         <img
                             src="https://placehold.co/400x300"
-                            alt="News Item"
+                            alt="Regional Sports League"
                             class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         >
                     </div>
                     <div class="space-y-2">
+                        <span class="text-red-600 dark:text-red-500 text-sm font-medium">Sports</span>
                         <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors line-clamp-2">
                             Regional Sports League Introduces New Teams and Divisions
                         </h3>
@@ -75,6 +78,6 @@
                             <span>6 hours ago</span>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </section>

@@ -6,11 +6,11 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Left Column - Main Highlight -->
-                <div class="group">
+                <a href="{{ route('blog.show', ['slug' => 'urban-architecture-evolution']) }}" class="group">
                     <div class="aspect-[16/9] overflow-hidden rounded-lg mb-4">
                         <img
                             src="https://placehold.co/800x450"
-                            alt="Weekly Highlight"
+                            alt="Urban Architecture Evolution"
                             class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
                         >
                     </div>
@@ -28,12 +28,12 @@
                             <span>This Week's Most Read</span>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 <!-- Right Column - Highlight List -->
                 <div class="space-y-6">
                     <!-- Highlight Item 1 -->
-                    <div class="flex gap-4 group">
+                    <a href="{{ route('blog.show', ['slug' => 'quantum-computing-breakthrough']) }}" class="flex gap-4 group">
                         <span class="text-3xl font-bold text-gray-200 dark:text-gray-700">01</span>
                         <div class="flex-1 space-y-2">
                             <span class="text-red-600 dark:text-red-500 text-sm font-medium">Technology</span>
@@ -44,10 +44,10 @@
                                 Scientists achieve major milestone in quantum computing, promising revolutionary advances in data processing capabilities.
                             </p>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Highlight Item 2 -->
-                    <div class="flex gap-4 group">
+                    <a href="{{ route('blog.show', ['slug' => 'renewable-energy-records']) }}" class="flex gap-4 group">
                         <span class="text-3xl font-bold text-gray-200 dark:text-gray-700">02</span>
                         <div class="flex-1 space-y-2">
                             <span class="text-red-600 dark:text-red-500 text-sm font-medium">Environment</span>
@@ -58,10 +58,10 @@
                                 Global renewable energy adoption reaches unprecedented levels, marking a significant shift in power generation.
                             </p>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Highlight Item 3 -->
-                    <div class="flex gap-4 group">
+                    <a href="{{ route('blog.show', ['slug' => 'mediterranean-diet-benefits']) }}" class="flex gap-4 group">
                         <span class="text-3xl font-bold text-gray-200 dark:text-gray-700">03</span>
                         <div class="flex-1 space-y-2">
                             <span class="text-red-600 dark:text-red-500 text-sm font-medium">Health</span>
@@ -72,10 +72,10 @@
                                 Comprehensive research confirms long-term health advantages of Mediterranean dietary patterns.
                             </p>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Highlight Item 4 -->
-                    <div class="flex gap-4 group">
+                    <a href="{{ route('blog.show', ['slug' => 'digital-art-nft-revolution']) }}" class="flex gap-4 group">
                         <span class="text-3xl font-bold text-gray-200 dark:text-gray-700">04</span>
                         <div class="flex-1 space-y-2">
                             <span class="text-red-600 dark:text-red-500 text-sm font-medium">Culture</span>
@@ -86,7 +86,7 @@
                                 How digital tokens are reshaping the art world and creating new opportunities for artists globally.
                             </p>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>

@@ -12,10 +12,10 @@
                         <div class="flex items-center text-gray-200 text-sm">
                             <span>8 min read</span>
                             <span class="mx-2">•</span>
-                            <span>Published 1 hour ago</span>
+                            <span>Yesterday</span>
                         </div>
                         <div class="flex space-x-4">
-                            <a href="#" class="inline-flex items-center px-6 py-3 bg-white text-red-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                            <a href="{{ route('blog.show', ['slug' => 'ground-breaking-medical-research']) }}" class="inline-flex items-center px-6 py-3 bg-white text-red-600 rounded-lg font-medium hover:bg-gray-100 transition-colors">
                                 Read Full Article
                                 <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
