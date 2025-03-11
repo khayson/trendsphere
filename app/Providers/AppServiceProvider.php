@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use App\View\Components\Landing\Hero;
+use App\View\Components\Landing\TrendingNews;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,5 +23,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Blade::component('landing.hero', Hero::class);
+        Blade::component('landing.trending-news', TrendingNews::class);
     }
 }
