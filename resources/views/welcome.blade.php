@@ -48,7 +48,7 @@
         <x-landing.weekly-highlights />
 
         <!-- Weekly Fun News Section -->
-        @include('components.landing.WeeklyFunNews')
+        <x-landing.weekly-fun-news />
 
         <!-- Video News Section -->
         <x-landing.video-news />

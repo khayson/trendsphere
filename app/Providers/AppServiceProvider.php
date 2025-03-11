@@ -14,6 +14,7 @@ use App\View\Components\Landing\FeaturedNews;
 use App\View\Components\Landing\BreakingNews;
 use App\View\Components\Landing\Newsletter;
 use App\View\Components\Landing\WeeklyHighlights;
+use App\View\Components\Landing\WeeklyFunNews;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,5 +41,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('landing.breaking-news', BreakingNews::class);
         Blade::component('landing.newsletter', Newsletter::class);
         Blade::component('landing.weekly-highlights', WeeklyHighlights::class);
+        Blade::component('landing.weekly-fun-news', WeeklyFunNews::class);
     }
 }
