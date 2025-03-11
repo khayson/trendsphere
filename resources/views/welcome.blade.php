@@ -38,7 +38,7 @@
         @include('components.landing.LatestNews')
 
         <!-- Medical Research Section -->
-        @include('components.landing.MedicalResearch')
+        <x-landing.medical-research />
 
         <!-- Featured News Section -->
         @include('components.landing.FeaturedNews')
