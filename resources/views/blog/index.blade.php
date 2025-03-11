@@ -35,62 +35,86 @@
             </div>
         </div>
 
-        <!-- Grid Layout for Posts -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @foreach($posts as $post)
-                <article class="group">
-                    <a href="{{ route('blog.show', $post->slug) }}" class="block">
-                        <div class="relative aspect-[16/9] overflow-hidden rounded-lg mb-4">
-                            <img
-                                src="{{ $post->featured_image }}"
-                                alt="{{ $post->featured_image_alt }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            >
-                            @if($post->is_video)
-                                <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
-                                    <div class="w-12 h-12 rounded-full bg-white/30 flex items-center justify-center">
-                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M8 5v14l11-7z"/>
-                                        </svg>
+        @if($posts->isEmpty())
+            <div class="text-center py-12">
+                <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-1" />
+                </svg>
+                <h3 class="mt-2 text-sm font-medium text-gray-900 dark:text-white">No posts found</h3>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                    @if(request('breaking'))
+                        There are no breaking news articles at the moment.
+                    @elseif(request('featured'))
+                        There are no featured articles at the moment.
+                    @elseif(request('type') === 'video')
+                        There are no video posts available.
+                    @elseif(request('type') === 'audio')
+                        There are no audio posts available.
+                    @elseif(request('category'))
+                        There are no posts in this category yet.
+                    @else
+                        There are no posts available at the moment.
+                    @endif
+                </p>
+            </div>
+        @else
+            <!-- Grid Layout for Posts -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach($posts as $post)
+                    <article class="group">
+                        <a href="{{ route('blog.show', $post->slug) }}" class="block">
+                            <div class="relative aspect-[16/9] overflow-hidden rounded-lg mb-4">
+                                <img
+                                    src="{{ $post->featured_image }}"
+                                    alt="{{ $post->featured_image_alt }}"
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                >
+                                @if($post->is_video)
+                                    <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                                        <div class="w-12 h-12 rounded-full bg-white/30 flex items-center justify-center">
+                                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M8 5v14l11-7z"/>
+                                            </svg>
+                                        </div>
                                     </div>
-                                </div>
-                                @if($post->video_duration)
-                                    <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                                        {{ $post->video_duration }}
+                                    @if($post->video_duration)
+                                        <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                            {{ $post->video_duration }}
+                                        </span>
+                                    @endif
+                                @endif
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-red-600 dark:text-red-500 text-sm font-medium">
+                                        {{ $post->is_video ? 'Video • ' : '' }}{{ $post->category->name }}
                                     </span>
-                                @endif
-                            @endif
-                        </div>
-                        <div class="space-y-2">
-                            <div class="flex items-center gap-2">
-                                <span class="text-red-600 dark:text-red-500 text-sm font-medium">
-                                    {{ $post->is_video ? 'Video • ' : '' }}{{ $post->category->name }}
-                                </span>
-                                @if($post->is_breaking)
-                                    <span class="text-red-600 dark:text-red-500 text-sm font-medium">Breaking</span>
-                                @endif
+                                    @if($post->is_breaking)
+                                        <span class="text-red-600 dark:text-red-500 text-sm font-medium">Breaking</span>
+                                    @endif
+                                </div>
+                                <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors line-clamp-2">
+                                    {{ $post->title }}
+                                </h2>
+                                <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
+                                    {{ $post->excerpt }}
+                                </p>
+                                <div class="flex items-center text-gray-500 dark:text-gray-400 text-sm">
+                                    <span>{{ $post->reading_time }} min read</span>
+                                    <span class="mx-2">•</span>
+                                    <span>{{ $post->published_at->diffForHumans() }}</span>
+                                </div>
                             </div>
-                            <h2 class="text-xl font-bold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors line-clamp-2">
-                                {{ $post->title }}
-                            </h2>
-                            <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
-                                {{ $post->excerpt }}
-                            </p>
-                            <div class="flex items-center text-gray-500 dark:text-gray-400 text-sm">
-                                <span>{{ $post->reading_time }} min read</span>
-                                <span class="mx-2">•</span>
-                                <span>{{ $post->published_at->diffForHumans() }}</span>
-                            </div>
-                        </div>
-                    </a>
-                </article>
-            @endforeach
-        </div>
+                        </a>
+                    </article>
+                @endforeach
+            </div>
 
-        <!-- Pagination -->
-        <div class="mt-8">
-            {{ $posts->links() }}
-        </div>
+            <!-- Pagination -->
+            <div class="mt-8">
+                {{ $posts->links() }}
+            </div>
+        @endif
     </div>
 </body>
 </html>
