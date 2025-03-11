@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use App\View\Components\Landing\Hero;
 use App\View\Components\Landing\TrendingNews;
+use App\View\Components\Landing\LatestUpdates;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Blade::component('landing.hero', Hero::class);
         Blade::component('landing.trending-news', TrendingNews::class);
+        Blade::component('landing.latest-updates', LatestUpdates::class);
     }
 }

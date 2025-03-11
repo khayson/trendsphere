@@ -32,7 +32,7 @@
         <x-landing.TrendingNews />
 
         <!-- Latest Updates Section -->
-        @include('components.landing.LatestUpdates')
+        <x-landing.latest-updates />
 
         <!-- Latest News Section -->
         @include('components.landing.LatestNews')
