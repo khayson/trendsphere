@@ -41,7 +41,7 @@
         <x-landing.medical-research />
 
         <!-- Featured News Section -->
-        @include('components.landing.FeaturedNews')
+        <x-landing.featured-news />
 
         <!-- Weekly Highlights Section -->
         @include('components.landing.WeeklyHighlights')
