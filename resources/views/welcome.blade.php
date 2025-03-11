@@ -52,6 +52,9 @@
 
         <!-- Video News Section -->
         <x-landing.video-news />
+
+        <!-- Newsletter Section -->
+        <x-landing.newsletter />
     </main>
 
     <!-- Footer -->
