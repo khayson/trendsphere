@@ -21,6 +21,7 @@
     @include('components.landing.Header')
 
     <!-- Breaking News Banner -->
+    <!-- <x-landing.breaking-news /> -->
     @include('components.landing.BreakingNews')
 
     <!-- Hero Section -->

@@ -11,6 +11,7 @@ use App\View\Components\Landing\MedicalResearch;
 use App\View\Components\Landing\LatestNews;
 use App\View\Components\Landing\VideoNews;
 use App\View\Components\Landing\FeaturedNews;
+use App\View\Components\Landing\BreakingNews;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,5 +35,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('landing.latest-news', LatestNews::class);
         Blade::component('landing.video-news', VideoNews::class);
         Blade::component('landing.featured-news', FeaturedNews::class);
+        Blade::component('landing.breaking-news', BreakingNews::class);
     }
 }
