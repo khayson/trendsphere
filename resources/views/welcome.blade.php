@@ -35,7 +35,7 @@
         <x-landing.latest-updates />
 
         <!-- Latest News Section -->
-        @include('components.landing.LatestNews')
+        <x-landing.latest-news />
 
         <!-- Medical Research Section -->
         <x-landing.medical-research />

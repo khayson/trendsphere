@@ -8,6 +8,7 @@ use App\View\Components\Landing\Hero;
 use App\View\Components\Landing\TrendingNews;
 use App\View\Components\Landing\LatestUpdates;
 use App\View\Components\Landing\MedicalResearch;
+use App\View\Components\Landing\LatestNews;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('landing.trending-news', TrendingNews::class);
         Blade::component('landing.latest-updates', LatestUpdates::class);
         Blade::component('landing.medical-research', MedicalResearch::class);
+        Blade::component('landing.latest-news', LatestNews::class);
     }
 }
