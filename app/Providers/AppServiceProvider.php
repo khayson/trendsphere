@@ -13,6 +13,7 @@ use App\View\Components\Landing\VideoNews;
 use App\View\Components\Landing\FeaturedNews;
 use App\View\Components\Landing\BreakingNews;
 use App\View\Components\Landing\Newsletter;
+use App\View\Components\Landing\WeeklyHighlights;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,5 +39,6 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('landing.featured-news', FeaturedNews::class);
         Blade::component('landing.breaking-news', BreakingNews::class);
         Blade::component('landing.newsletter', Newsletter::class);
+        Blade::component('landing.weekly-highlights', WeeklyHighlights::class);
     }
 }

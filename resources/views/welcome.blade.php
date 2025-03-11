@@ -45,7 +45,7 @@
         <x-landing.featured-news />
 
         <!-- Weekly Highlights Section -->
-        @include('components.landing.WeeklyHighlights')
+        <x-landing.weekly-highlights />
 
         <!-- Weekly Fun News Section -->
         @include('components.landing.WeeklyFunNews')
