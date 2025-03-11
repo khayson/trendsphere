@@ -48,6 +48,9 @@
 
         <!-- Weekly Fun News Section -->
         @include('components.landing.WeeklyFunNews')
+
+        <!-- Video News Section -->
+        <x-landing.video-news />
     </main>
 
     <!-- Footer -->
