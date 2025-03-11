@@ -3,27 +3,68 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blog - TO.NEWS</title>
+    <title>{{ request('type') ? ucfirst(request('type')) : 'News' }} - TO.NEWS</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-white dark:bg-gray-900">
+<body class="font-sans antialiased bg-white dark:bg-gray-900">
+    <!-- Header with Back Button -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center space-x-4">
+                <a href="/" class="flex items-center text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                    Back to Home
+                </a>
+                <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
+                    @if(request('breaking'))
+                        Breaking News
+                    @elseif(request('featured'))
+                        Featured News
+                    @elseif(request('type') === 'video')
+                        Video News
+                    @elseif(request('type') === 'audio')
+                        Audio News
+                    @elseif(request('category'))
+                        {{ ucfirst(request('category')) }}
+                    @else
+                        Latest News
+                    @endif
+                </h1>
+            </div>
+        </div>
+
         <!-- Grid Layout for Posts -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($posts as $post)
                 <article class="group">
                     <a href="{{ route('blog.show', $post->slug) }}" class="block">
-                        <div class="aspect-[16/9] overflow-hidden rounded-lg mb-4">
+                        <div class="relative aspect-[16/9] overflow-hidden rounded-lg mb-4">
                             <img
                                 src="{{ $post->featured_image }}"
                                 alt="{{ $post->featured_image_alt }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             >
+                            @if($post->is_video)
+                                <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+                                    <div class="w-12 h-12 rounded-full bg-white/30 flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                @if($post->video_duration)
+                                    <span class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                                        {{ $post->video_duration }}
+                                    </span>
+                                @endif
+                            @endif
                         </div>
                         <div class="space-y-2">
                             <div class="flex items-center gap-2">
                                 <span class="text-red-600 dark:text-red-500 text-sm font-medium">
-                                    {{ $post->category->name }}
+                                    {{ $post->is_video ? 'Video • ' : '' }}{{ $post->category->name }}
                                 </span>
                                 @if($post->is_breaking)
                                     <span class="text-red-600 dark:text-red-500 text-sm font-medium">Breaking</span>
